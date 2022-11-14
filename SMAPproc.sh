@@ -56,7 +56,6 @@ if [ -f "$INFILE" ]; then
 
     if [[ $? != 0 ]]; then
         echo "SMAP IODA converter failed"
-        exit 10
     fi
 
     if [ -f "$OUTFILE" ]; then
