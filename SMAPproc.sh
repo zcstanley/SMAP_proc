@@ -59,11 +59,14 @@ if [ -f "$INFILE" ]; then
     fi
 
     if [ -f "$OUTFILE" ]; then
+        
         echo "IODA file created"
+        
+        # Save IODA file name
+        FILES+=" "${OUTFILE}
+    
     fi
 
-    # Save IODA file name
-    FILES+=" "${OUTFILE}
 fi
 
 done # end for INFILE
