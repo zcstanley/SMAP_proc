@@ -9,6 +9,6 @@ Run with:
 
 source /scratch2/BMC/gsienkf/Zofia.Stanley/jedi/exps/ClaraWorkflow/land-offline_workflow/DA_update/ioda_mods_hera
 
-bash SMAP_proc.sh YYYYMMDDHH 
+bash SMAPproc.sh YYYYMMDDHH 
 
 where YYYYMMDDHH is a 10 character date string (e.g. 2016010118)
