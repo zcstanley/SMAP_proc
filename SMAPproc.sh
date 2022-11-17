@@ -13,7 +13,7 @@ echo "Merging SMAP files in 6 hour window centered around ${1}."
 OBSDIR=${OBSDIR:-"/scratch2/NCEPDEV/land/data/DA/"}
 SMAP_OBSDIR=${SMAP_OBSDIR:-${OBSDIR}soil_moisture/SMAP/SMAP_L2_SM_P_E_R17/2016}
 WORKDIR=${WORKDIR:-"/scratch2/BMC/gsienkf/Zofia.Stanley/workdir/"}
-IODA_SRC_DIR=${IODA_SRC_DIR:-"/scratch2/BMC/gsienkf/Zofia.Stanley/jedi/src/ioda-bundle/"}
+IODA_SRC_DIR=${IODA_SRC_DIR:-"/scratch2/BMC/gsienkf/UFS-RNR/UFS-RNR-stack/external/ioda-bundle/"}
 
 cd $WORKDIR
 
