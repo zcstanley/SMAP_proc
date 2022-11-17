@@ -74,7 +74,13 @@ done # end for INC
 
 echo "Done converting SMAP files to IODA format."
 
-# Merge ioda files
-ncrcat ${FILES} -O ${WORKDIR}/smap_${YYYY}${MM}${DD}T${HH}00.nc 
 
-echo "Done merging SMAP IODA files."
+
+if [ ! -z "$FILES" ]; then
+    # Merge ioda files
+    ncrcat ${FILES} -O ${WORKDIR}/smap_${YYYY}${MM}${DD}T${HH}00.nc 
+
+    echo "Done merging SMAP IODA files."
+fi
+
+echo "Exiting SMAPproc"
