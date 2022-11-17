@@ -52,7 +52,7 @@ if [ -f "$INFILE" ]; then
     OUTFILE=${WORKDIR}/IODA_${SHORTNAME}.nc
     
     # Convert to IODA format
-    python ${SMAP_IODA} -i ${INFILE} -o ${OUTFILE} -m maskout
+    python ${SMAP_IODA} -i ${INFILE} -o ${OUTFILE} --maskMissing
 
     if [[ $? != 0 ]]; then
         echo "SMAP IODA converter failed"
