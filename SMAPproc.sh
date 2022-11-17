@@ -41,6 +41,8 @@ do
 # Get date INC hours away from input date
 DATETIME=$(date -u -d "${YYYY}-${MM}-${DD} ${HH}:00:00 UTC ${INC} hour" +%Y%m%dT%H)
 
+if [ $? -eq 0 ]; then
+
 # If file exist, convert to IODA format and store name
 for INFILE in ${SMAP_OBSDIR}/${FSTUB}_*_${PASS}_${DATETIME}*.h5
 do
@@ -70,6 +72,7 @@ if [ -f "$INFILE" ]; then
 fi
 
 done # end for INFILE
+fi
 done # end for INC
 
 echo "Done converting SMAP files to IODA format."
