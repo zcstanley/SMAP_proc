@@ -41,6 +41,8 @@ do
 # Get date INC hours away from input date
 DATETIME=$(date -u -d "${YYYY}-${MM}-${DD} ${HH}:00:00 UTC ${INC} hour" +%Y%m%dT%H)
 
+if [ $? -eq 0 ]; then
+
 # If file exist, convert to IODA format and store name
 for INFILE in ${SMAP_OBSDIR}/${FSTUB}_*_${PASS}_${DATETIME}*.h5
 do
@@ -52,7 +54,7 @@ if [ -f "$INFILE" ]; then
     OUTFILE=${WORKDIR}/IODA_${SHORTNAME}.nc
     
     # Convert to IODA format
-    python ${SMAP_IODA} -i ${INFILE} -o ${OUTFILE} -m maskout
+    python ${SMAP_IODA} -i ${INFILE} -o ${OUTFILE} --maskMissing
 
     if [[ $? != 0 ]]; then
         echo "SMAP IODA converter failed"
@@ -70,11 +72,18 @@ if [ -f "$INFILE" ]; then
 fi
 
 done # end for INFILE
+fi
 done # end for INC
 
 echo "Done converting SMAP files to IODA format."
 
-# Merge ioda files
-ncrcat ${FILES} -O ${WORKDIR}/smap_${YYYY}${MM}${DD}T${HH}00.nc 
 
-echo "Done merging SMAP IODA files."
+
+if [ ! -z "$FILES" ]; then
+    # Merge ioda files
+    ncrcat ${FILES} -O ${WORKDIR}/smap_${YYYY}${MM}${DD}T${HH}00.nc 
+
+    echo "Done merging SMAP IODA files."
+fi
+
+echo "Exiting SMAPproc"
